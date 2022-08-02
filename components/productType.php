@@ -13,7 +13,7 @@ $qallpdt = mysqli_query($conn, $allpdt);
             </div>
 
             <div class="card-body">
-                <form action="" method="post"  id="formAddProductType">
+                <form action="" method="post" id="formAddProductType">
                     <div class="form-group">
                         <div class="form-floating">
                             <input type="text" name="type_name" id="type_name" class="form-control" placeholder="Product type" autocomplete="off" required>
@@ -33,7 +33,7 @@ $qallpdt = mysqli_query($conn, $allpdt);
     <div class="col-md-8">
         <h4><i class="fas fa-folder"></i> ประเภทสินค้าทั้งหมด</h4>
         <div class="table-responsive">
-            <table class="table-sm table">
+            <table class="table-sm table table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">ID</th>
@@ -43,10 +43,17 @@ $qallpdt = mysqli_query($conn, $allpdt);
                 </thead>
 
                 <tbody>
-                    <?php while ($rallpdt = mysqli_fetch_array($qallpdt)) { ?>
+                    <?php while ($rallpdt = mysqli_fetch_array($qallpdt)) {
+                        // Count product in producttype
+                        $pdt_id = $rallpdt['type_id'];
+                        $count_product = "SELECT * FROM `products` WHERE `product_type` = '" . $pdt_id . "'";
+                        $qcount_product = $conn->query($count_product);
+                        $rcount_product = mysqli_num_rows($qcount_product);
+                    ?>
                         <tr>
-                            <td><?= $rallpdt['type_id']; ?></td>
+                            <td class="text-center"><?= $rallpdt['type_id']; ?></td>
                             <td><?= $rallpdt['type_name']; ?></td>
+                            <td class="text-center"><?= number_format($rcount_product, 0); ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
