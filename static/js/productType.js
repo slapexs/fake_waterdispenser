@@ -9,8 +9,27 @@ $('#formAddProductType').submit((e) => {
     data: { insert: producType },
     dataType: 'json',
     success: (res) => {
-      console.log(res);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: res.status,
+        showConfirmButton: false,
+        showCancelButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+      }).then(() => window.location.reload());
     },
-    error: (e) => console.log(e),
+    error: (xhr, ajaxOptions, thrownError) => {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Error!',
+        text: `${thrownError}(${xhr.status})`,
+        timer: 3000,
+        showConfirmButton: false,
+        showCancelButton: false,
+        timerProgressBar: true,
+      });
+    },
   });
 });
