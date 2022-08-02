@@ -1,5 +1,7 @@
 <?php
-    $page = "";
+// Connect database
+include_once('./backend/condb.php');
+$page = $_GET['page'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,20 +40,28 @@
 
 <body>
 
-<div class="container align-items-center justify-content-center d-flex vh-100">
-    <div class="">
-    <?php
-    if($page==""){
-        include_once('./components/main.php');
-    }
-    ?>
+    <div class="container <?= ($page == "" ? "align-items-center justify-content-center d-flex vh-100" : "") ?>">
+        <div>
+            <?php
+            switch ($page) {
+                case "producttype":
+                    include_once('./components/productType.php');
+                    break;
+                default:
+                    include_once('./components/main.php');
+                    break;
+            }
+            ?>
+        </div>
     </div>
-</div>
 
 
-<!-- Script Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Script Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <!-- External js -->
+    <script src="./static/js/productType.js"></script>
 </body>
 
 </html>
