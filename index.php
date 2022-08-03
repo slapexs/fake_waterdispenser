@@ -47,6 +47,9 @@ $page = $_GET['page'];
                 case "producttype":
                     include_once('./components/productType.php');
                     break;
+                case "product":
+                    include_once('./components/product.php');
+                    break;
                 default:
                     include_once('./components/main.php');
                     break;
@@ -62,6 +65,7 @@ $page = $_GET['page'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
     <!-- External js -->
     <script src="./static/js/productType.js"></script>
+    <script src="./static/js/product.js"></script>
     <!-- Sweetalert 2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
