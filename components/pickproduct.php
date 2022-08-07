@@ -25,7 +25,7 @@ $qpick_pd = $conn->query($pick_pd);
     <div class="row row-cols-2 row-cols-md-3 g-4">
         <?php while($rpick_pd = mysqli_fetch_array($qpick_pd)){ ?>
             <div class="col">
-                <a href="#" class="text-decoration-none">
+                <a href="./?page=cart&pdid=<?= $rpick_pd['product_id']; ?>" class="text-decoration-none">
                     <div class="card text-dark">
                         <img src="<?= ($rpick_pd['product_image'] != "" ? './upload/' + $rpick_pd['product_image'] : "./static/image/noimage.png"); ?>" class="card-img-top" alt="product">
                         <div class="card-body">
