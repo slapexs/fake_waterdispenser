@@ -2,6 +2,7 @@
 // Connect database
 include_once('./backend/condb.php');
 $page = $_GET['page'];
+$product_type = $_GET['type'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +40,6 @@ $page = $_GET['page'];
 </head>
 
 <body>
-<?php echo $_COOKIE['machine']; ?>
     <div class="container <?= ($page == "" ? "align-items-center justify-content-center d-flex vh-100" : "") ?>">
         <div>
             <?php
@@ -49,6 +49,9 @@ $page = $_GET['page'];
                     break;
                 case "product":
                     include_once('./components/product.php');
+                    break;
+                case "pickproduct":
+                    include_once('./components/pickproduct.php');
                     break;
                 default:
                     include_once('./components/main.php');
