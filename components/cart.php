@@ -6,12 +6,12 @@ $rfindpd = mysqli_fetch_assoc($qfindpd);
 
 // List payments
 $payments = [
-    ["cash.png", "เงินสด"],
-    ["debit-cards.png", "บัตรเครดิต"],
-    ["paypal.png", "Paypal"],
-    ["ethereum.png", "Crypto"],
-    ["qr-code.png", "QR code"],
-    ["nomoney.png", "ติดไว้ก่อน"]
+    ["cash.png", "เงินสด", 1],
+    ["debit-cards.png", "บัตรเครดิต", 0],
+    ["paypal.png", "Paypal", 0],
+    ["ethereum.png", "Crypto", 0],
+    ["qr-code.png", "QR code", 0],
+    ["nomoney.png", "ติดไว้ก่อน", 0]
 ];
 ?>
 <div class="mt-5">
@@ -29,18 +29,18 @@ $payments = [
 
     <div class="bg-light rounded p-4">
         <h3>ระบุจำนวนที่ต้องการ</h3>
-        <input type="number" name="amount_product" id="amount_product" class="form-control form-control-lg" min="1" max="<?= $rfindpd['product_amount']; ?>" value="1">
+        <input type="number" name="amount_product" id="amount_product" class="form-control form-control-lg" min="1" max="<?= $rfindpd['product_amount']; ?>" placeholder="0" required oninput="calprice(this.value, <?= $rfindpd['product_price']; ?>, <?= $rfindpd['product_amount']; ?>)">
     </div>
 
     <div class="bg-light rounded p-4 mt-3">
         <h3>เลือกวิธีจ่ายเงิน</h3>
 
-        <div class="row row-cols-2 row-cols-md-4 g-4 text-center">
+        <div class="row row-cols-2 row-cols-md-3 g-4 text-center">
             <?php for ($i = 0; $i < count($payments); $i++) { ?>
                 <div class="col">
-                    <div class="rounded border border-2 p-3">
-                        <img src="./static/image/<?= $payments[$i][0]; ?>" class="img-fluid mb-3" width="64" alt="payment">
-                        <h4><?= $payments[$i][1]; ?></h4>
+                    <div class="rounded <?= ($i == 0 ? 'border border-primary' : 'border'); ?> border-2 p-3">
+                        <img src="./static/image/<?= $payments[$i][0]; ?>" class="img-fluid mb-3" width="64" alt="payment" onclick="choosePayment(<?= $payments[$i][2]; ?>)">
+                        <h5><?= $payments[$i][1]; ?></h5>
                     </div>
                 </div>
             <?php } ?>
@@ -48,6 +48,6 @@ $payments = [
     </div>
 
     <div class="d-flex justify-content-center mt-3">
-        <button class="btn btn-primary btn-lg rounded-pill" type="button">สั่งเครื่องดื่ม (฿15)</button>
+        <button class="btn btn-primary btn-lg rounded-pill disabled" type="button" id="btnSubmitOrder" onclick="submitOrder(<?= $rfindpd['product_id']; ?>, <?= $rfindpd['product_price']; ?>)">สั่งเครื่องดื่ม (฿0)</button>
     </div>
 </div>
