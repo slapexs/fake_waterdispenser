@@ -56,6 +56,9 @@ $product_type = $_GET['type'];
                 case "cart":
                     include_once('./components/cart.php');
                     break;
+                case "ordercompleted":
+                    include_once('./components/orderCompleted.php');
+                    break;
                 default:
                     include_once('./components/main.php');
                     break;

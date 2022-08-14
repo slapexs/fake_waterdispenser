@@ -60,7 +60,9 @@ function submitOrder(productId, price) {
         type: 'post',
         data: { placeOrder: order },
         dataType: 'json',
-        success: (res) => console.log(res),
+        success: (res) => {
+          window.location.href = './?page=ordercompleted';
+        },
         error: (err) => console.log(err),
       });
     });
