@@ -38,8 +38,8 @@ $payments = [
         <div class="row row-cols-2 row-cols-md-3 g-4 text-center">
             <?php for ($i = 0; $i < count($payments); $i++) { ?>
                 <div class="col">
-                    <div class="rounded <?= ($i == 0 ? 'border border-primary' : 'border'); ?> border-2 p-3">
-                        <img src="./static/image/<?= $payments[$i][0]; ?>" class="img-fluid mb-3" width="64" alt="payment" onclick="choosePayment(<?= $payments[$i][2]; ?>)">
+                    <div class="rounded <?= ($i == 0 ? 'border border-primary' : 'border'); ?> border-2 p-3" onclick="choosePayment(<?= $payments[$i][2]; ?>)">
+                        <img src="./static/image/<?= $payments[$i][0]; ?>" class="img-fluid mb-3" width="64" alt="payment">
                         <h5><?= $payments[$i][1]; ?></h5>
                     </div>
                 </div>
