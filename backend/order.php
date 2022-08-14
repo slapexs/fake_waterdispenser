@@ -5,7 +5,7 @@ include_once('./condb.php');
 if (isset($_POST['placeOrder'])) {
     $order = $_POST['placeOrder'];
     
-    $ins = "INSERT INTO `orders` (`order_product`,`order_amount`, `order_ref_machine`, `order_price`) VALUES ('" . $order[0] . "','" . $order[1] . "','" . $order[2] . "','" . $order[3] . "')";
+    $ins = "INSERT INTO `orders` (`order_id`,`order_product`,`order_amount`, `order_ref_machine`, `order_price`) VALUES ('" . $order[4] . "', '" . $order[0] . "','" . $order[1] . "','" . $order[2] . "','" . $order[3] . "')";
     $qins = $conn->query($ins);
     if($qins){
         $res = 'inserted';

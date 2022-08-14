@@ -13,8 +13,22 @@ $payments = [
     ["qr-code.png", "QR code", 0],
     ["nomoney.png", "ติดไว้ก่อน", 0]
 ];
+
+// Generate random order ID
+function generateRandomString($length)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+$orderId = generateRandomString(10);
 ?>
 <div class="mt-5">
+    <p id="orderId" class="d-none"><?= $orderId; ?></p>
     <a href="./" class="btn btn-lg btn-light shadow" role="button"><i class="fas fa-arrow-left"></i> กลับ</a>
     <div class="d-flex align-items-center justify-content-center">
         <img src="<?= ($rfindpd['product_image'] != "" ? './upload/' + $rfindpd['product_image'] : './static/image/noimage.png') ?>" alt="product" class="img-fluid" width="128">

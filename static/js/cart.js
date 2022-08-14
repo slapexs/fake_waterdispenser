@@ -44,6 +44,7 @@ function submitOrder(productId, price) {
   const amount = document.querySelector('#amount_product').value;
   const machineId = document.cookie.split('=');
   const orderPrice = amount * price;
+  const orderId = document.querySelector('#orderId').innerHTML;
   if (amount > 0) {
     Swal.fire({
       position: 'center',
@@ -54,14 +55,14 @@ function submitOrder(productId, price) {
       allowOutsideClick: false,
       allowEscapeKey: false,
     }).then(() => {
-      const order = [productId, amount, machineId[1], orderPrice];
+      const order = [productId, amount, machineId[1], orderPrice, orderId];
       $.ajax({
         url: './backend/order.php',
         type: 'post',
         data: { placeOrder: order },
         dataType: 'json',
         success: (res) => {
-          window.location.href = './?page=ordercompleted';
+          window.location.href = `./?page=ordercompleted&orderId=${orderId}`;
         },
         error: (err) => console.log(err),
       });
