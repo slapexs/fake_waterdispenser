@@ -51,6 +51,8 @@ function submitOrder(productId, price) {
       title: 'กำลังเตรียม',
       text: 'กรุณาจ่ายเงินเพื่อดำเนินการต่อ',
       showConfirmButton: true,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
     }).then(() => {
       const order = [productId, amount, machineId[1], orderPrice];
       $.ajax({
