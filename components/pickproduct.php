@@ -27,7 +27,7 @@ $qpick_pd = $conn->query($pick_pd);
             <div class="col">
                 <a href="./?page=cart&pdid=<?= $rpick_pd['product_id']; ?>" class="text-decoration-none">
                     <div class="card text-dark">
-                        <img src="<?= ($rpick_pd['product_image'] != "" ? './upload/' + $rpick_pd['product_image'] : "./static/image/noimage.png"); ?>" class="card-img-top" alt="product">
+                        <img src="<?= ($rpick_pd['product_image'] != "" ? './upload/' . $rpick_pd['product_image'] : "./static/image/noimage.png"); ?>" class="card-img-top" alt="product">
                         <div class="card-body">
                             <h4 class="card-title"><?= $rpick_pd['product_name']; ?></h4>
                             <h5 class="card-text mb-0">ราคา: <span class="price-color">฿<?= $rpick_pd['product_price']; ?></span></h5>

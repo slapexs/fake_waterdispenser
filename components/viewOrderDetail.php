@@ -5,6 +5,7 @@
     </div>
     <div class="offcanvas-body">
         <p id="fetchOrderId" class="d-none"></p>
+        <p id="fetchProductId" class="d-none"></p>
         <div class="d-flex flex-column">
             <img src="" id="fetchOrderImage" class="img-fluid mx-auto" width="128" alt="product image">
             <h5 id="fetchOrderName" class="mt-2"></h5>
@@ -13,7 +14,7 @@
             <p><strong>สถานะ: </strong><span id="fetchOrderStatus"></span></p>
         </div>
         <d class="d-grid">
-            <button class="btn btn-success d-none" type="button" id="btnChangeOrderStatus">
+            <button class="btn btn-success d-none" type="button" id="btnChangeOrderStatus" onclick="changeStatusOrder()">
                 ออเดอร์เรียบร้อย
             </button>
         </d>
