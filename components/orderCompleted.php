@@ -41,7 +41,7 @@ $orderID = $_GET['orderId'];
                             showConfirmButton: false,
                             allowEscapeKey: false,
                             allowOutsideClick: false
-                        })
+                        }).then(() => window.location.href = './')
                     }
                 },
                 error: (err) => {
