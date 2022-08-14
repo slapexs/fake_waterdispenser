@@ -54,18 +54,22 @@ function submitOrder(productId, price) {
       showConfirmButton: true,
       allowOutsideClick: false,
       allowEscapeKey: false,
-    }).then(() => {
-      const order = [productId, amount, machineId[1], orderPrice, orderId];
-      $.ajax({
-        url: './backend/order.php',
-        type: 'post',
-        data: { placeOrder: order },
-        dataType: 'json',
-        success: (res) => {
-          window.location.href = `./?page=ordercompleted&orderId=${orderId}`;
-        },
-        error: (err) => console.log(err),
-      });
+    }).then((e) => {
+      if (e.isConfirmed) {
+        const order = [productId, amount, machineId[1], orderPrice, orderId];
+        $.ajax({
+          url: './backend/order.php',
+          type: 'post',
+          data: { placeOrder: order },
+          dataType: 'json',
+          success: (res) => {
+            setTimeout(() => {
+              window.location.href = `./?page=ordercompleted&orderId=${orderId}`;
+            }, 1000);
+          },
+          error: (err) => console.log(err),
+        });
+      }
     });
   }
 }
