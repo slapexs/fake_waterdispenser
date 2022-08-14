@@ -59,6 +59,9 @@ $product_type = $_GET['type'];
                 case "ordercompleted":
                     include_once('./components/orderCompleted.php');
                     break;
+                case "backend":
+                    include_once('./components/backend.php');
+                    break;
                 default:
                     include_once('./components/main.php');
                     break;
@@ -79,6 +82,7 @@ $product_type = $_GET['type'];
     <script src="./static/js/productType.js"></script>
     <script src="./static/js/product.js"></script>
     <script src="./static/js/cart.js"></script>
+    <script src="./static/js/order.js"></script>
 </body>
 
 </html>

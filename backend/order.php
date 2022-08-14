@@ -26,3 +26,19 @@ if (isset($_POST['checkStatus'])) {
     $response = ['status' => $orderStatus];
     echo json_encode($response);
 }
+
+// Fetch order detail
+if (isset($_POST['fetchOrderDefail'])) {
+    $data = $_POST['fetchOrderDefail'];
+    $fetord = "SELECT * FROM `products` WHERE `product_id` = '" . $data[1] . "' ";
+    $qfetord = $conn->query($fetord);
+    $rfetord = mysqli_fetch_assoc($qfetord);
+
+    // Fet order detail
+    $ord = "SELECT * FROM `orders` WHERE `order_id` = '".$data[0]."' ";
+    $qord = $conn->query($ord);
+    $rord = mysqli_fetch_assoc($qord);
+    $resData = [$data[0], $rfetord['product_image'], $rfetord['product_name'], $rfetord['product_amount'], $rfetord['product_price'], $rord['order_status']];
+    $response = ['status' => $resData];
+    echo json_encode($response);
+}

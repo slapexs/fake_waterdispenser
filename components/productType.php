@@ -2,6 +2,8 @@
 // Select all product join producttype
 $allpdt = "SELECT * FROM `product_types`";
 $qallpdt = mysqli_query($conn, $allpdt);
+include_once('navbar.php');
+
 ?>
 
 <div class="row mt-5">

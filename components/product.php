@@ -13,6 +13,8 @@ while ($rallpdt = mysqli_fetch_array($qallpdt)) {
     array_push($productTypes_id, $rallpdt['type_id']);
     array_push($productTypes_name, $rallpdt['type_name']);
 }
+
+include_once('navbar.php');
 ?>
 
 <div class="row mt-5">
